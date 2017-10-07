@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">FlavorFull</string>
+
+    <!--
+     Login Activity
+    -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="login_button">Login</string>
+    <string name="sign_up_button">Sign Up</string>
+
+    <!--
+     Sign Up Activity
+    -->
+    <string name="action_cancel">Cancel</string>
+    <string name="action_submit">Submit</string>
+
+
 </resources>

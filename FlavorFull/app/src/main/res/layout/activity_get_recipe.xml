@@ -87,6 +87,15 @@ tools:context="com.example.flavorfull.flavorfull.GetRecipe">
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
             tools:layout_editor_absoluteX="-104dp" />
 
+        <Button
+            android:id="@+id/btn_newPage"
+            android:textColor="@color/buttonColor"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Next  ->" />
+
         <TextView
             android:id="@+id/desc_title"
             android:layout_width="match_parent"
@@ -180,15 +189,7 @@ tools:context="com.example.flavorfull.flavorfull.GetRecipe">
             app:layout_constraintTop_toBottomOf="@+id/txt_title"
             tools:layout_editor_absoluteX="-104dp" />
 
-        <Button
-            android:id="@+id/btn_newPage"
-            android:textColor="@color/buttonColor"
-            android:backgroundTint="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.06"
-            android:text="New Recipe" />
+
 
     </LinearLayout>
 </ScrollView>

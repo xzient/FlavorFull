@@ -36,9 +36,11 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
     }
 
-    public String findRecipe(ArrayList<String> spices){
+    public String findRecipe(){
         HttpURLConnection c = null;
+        Log.d("DEBUGGING!!! ", "debug test ");
         if(sb == null) {
+            Log.d("DEBUGGING!!! ", "sb is null ");
             try {
                 URL u = new URL(mUrl);
                 c = (HttpURLConnection) u.openConnection();
@@ -63,38 +65,63 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
 
         ArrayList<String> allSpices = User.inventory;
-        ArrayList<String> hasSpices = User.spices;
 
+        //TODO: change
+        ArrayList<String> hasSpices = new ArrayList<String>();
+        hasSpices.add("McCormick® Black Pepper, Ground");
+        hasSpices.add("McCormick® Thyme Leaves");
+
+        Log.d("DEBUGGING!!! ", "added " + hasSpices.get(0) + " " + hasSpices.get(1));
         try{
             JSONObject json = new JSONObject(sb.toString());
             JSONArray arr = json.getJSONArray("content");
 
+            //loop through all recipes
             for (int i = 0; i < arr.length(); i++) {
+
+
                 JSONObject recipe = new JSONObject(arr.get(i).toString());
                 JSONArray ingredients = recipe.getJSONArray("ingredients");
-                JSONObject actualIngredient = new JSONObject(ingredients.get(i).toString());
-                String spiceName = actualIngredient.get("ingredientName").toString();
+
+
+                Log.d("DEBUGGING!!! ", "In recipe: " + recipe.get("title").toString());
+
                 int total = 0;
                 int has = 0;
+
+                //loop ingredients in recipe
                 for (int j = 0; i < ingredients.length(); i++) {
+                    JSONObject actualIngredient = new JSONObject(ingredients.get(i).toString());
+                    String spiceName = actualIngredient.get("ingredientName").toString().replace("&reg;","®");
+                    Log.d("DEBUGGING!!! ", "In ingredient: " + spiceName);
                     if (allSpices.contains(spiceName)) {
+                        Log.d("DEBUGGING!!! ", spiceName + " is a spice");
                         total++;
                         if (hasSpices.contains(spiceName)) {
+                            Log.d("DEBUGGING!!! ", "USER OWNS SPICE");
                             has++;
+                        }else{
+                            Log.d("DEBUGGING!!! ", "USER DOES NOT OWN SPICE");
                         }
+                    }else{
+
                     }
                 }
                 if (has == total && !viewed.contains(recipe.get("id").toString())) {
+
+                    Log.d("DEBUGGING!!! ", "matched perfectly: " + recipe.get("title").toString());
                     viewed.add(recipe.get("id").toString());
                     recipeID = recipe.get("id").toString();
                     return recipe.get("id").toString();
+                }else{
+                    //add close matches to list then loop through later
                 }
             }
         }catch(JSONException je){
-
+            je.printStackTrace();
         }
 
-
+        Log.d("DEBUGGING!!! ", "returned null ");
         return null;
     }
     @Override
@@ -103,9 +130,9 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     protected String doInBackground(Void... b) {
-        Log.d("DEBUGGING!!!  ", "doInBackground");
+        //Log.d("DEBUGGING!!!  ", "doInBackground");
         if(sb != null){
-            recipeID = findRecipe(null);
+            recipeID = findRecipe();
         }
         doJSON(mUrl);
 
@@ -168,7 +195,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
             }
         };
         try{
-            Log.d("DEBUGGING!!!  ", "try  1");
+
             JSONObject json = new JSONObject(sb.toString());
 
             JSONArray arr = json.getJSONArray("content");
@@ -184,7 +211,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
             }
 
 
-            Log.d("DEBUGGING!!! ", "for loop ");
+
 
             String title = recipe.get("title").toString();
 

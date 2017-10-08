@@ -68,11 +68,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
         try{
             JSONObject json = new JSONObject(sb.toString());
             JSONArray arr = json.getJSONArray("content");
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 4459c72b949c1521829cd5708b7cce5fc723ea66
             for (int i = 0; i < arr.length(); i++) {
                 JSONObject recipe = new JSONObject(arr.get(i).toString());
                 JSONArray ingredients = recipe.getJSONArray("ingredients");

@@ -48,6 +48,15 @@ public class User {
 
     }
 
+    public boolean removeSspice(String spice) {
+        if (inventory.contains(spice)) {
+            this.spices.remove(spice);
+            return true;
+        }
+        return false;
+
+    }
+
     public void removeSpice(String spice) {
         this.spices.remove(spice);
     }

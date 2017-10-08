@@ -101,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
         display_spices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                display.setText(person.display());
+                Intent rev_spice_intent = new Intent(MainActivity.this, RemoveSpice.class);
+                startActivity(rev_spice_intent);
             }
         });
 

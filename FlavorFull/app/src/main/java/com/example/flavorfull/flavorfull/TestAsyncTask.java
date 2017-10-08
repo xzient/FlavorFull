@@ -73,13 +73,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
 
         /*
-        String title = recipe.get("title").toString();
 
-            final String finalTitle = title;
-            mContext.runOnUiThread(new Runnable() { public void run() {
-                TextView txtv = (TextView) mContext.findViewById(R.id.txt_title);
-                txtv.setText(finalTitle);
-            }});
 
          */
         Log.d("DEBUGGING!!! ", "added " + hasSpices.get(0) + " " + hasSpices.get(1));
@@ -126,6 +120,13 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
                     Log.d("DEBUGGING!!! ", "matched perfectly: " + recipe.get("title").toString());
                     viewed.add(recipe.get("id").toString());
                     recipeID = recipe.get("id").toString();
+
+                    final String finalTitle = hasSpices.get(0);
+                    mContext.runOnUiThread(new Runnable() { public void run() {
+                        TextView txtv = (TextView) mContext.findViewById(R.id.txt_matched);
+                        txtv.setText(finalTitle);
+                    }});
+
                     return recipe.get("id").toString();
                 }else{
                     //add close matches to list then loop through later

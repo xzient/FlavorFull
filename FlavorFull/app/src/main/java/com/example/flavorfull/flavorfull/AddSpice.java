@@ -29,12 +29,19 @@ public class AddSpice extends AppCompatActivity {
         addSpice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                person.addSpice(input.getText().toString().trim());
+                boolean addSpice = person.addSpice(input.getText().toString().trim());
+                if (addSpice) {
+                    Toast.makeText(AddSpice.this, "Spice added!",
+                            Toast.LENGTH_SHORT).show();
+                    Intent return_main = new Intent(AddSpice.this, MainActivity.class);
+                    startActivity(return_main);
+                }
 
-                Toast.makeText(AddSpice.this, "Spice added!",
-                        Toast.LENGTH_SHORT).show();
-                Intent return_main = new Intent(AddSpice.this, MainActivity.class);
-                startActivity(return_main);
+                else {
+                    Toast.makeText(AddSpice.this, "That spice is not in the inventory!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }

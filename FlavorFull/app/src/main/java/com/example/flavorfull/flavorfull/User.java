@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by xavy_ on 10/8/2017.
@@ -33,8 +34,13 @@ public class User {
         return user_instance;
     }
 
-    public void addSpice(String spice) {
-        this.spices.add(spice);
+    public boolean addSpice(String spice) {
+        if (inventory.contains(spice)) {
+            this.spices.add(spice);
+            return true;
+        }
+        return false;
+
     }
 
     public void removeSpice(String spice) {
@@ -42,8 +48,17 @@ public class User {
     }
 
     public String display() {
-        return this.spices.toString();
+        String stringB = "";
+
+        Iterator<String> itr = spices.iterator();
+        while (itr.hasNext()) {
+            String element = itr.next();
+            stringB += element + "\n";
+        }
+
+        return stringB;
     }
+
 
 
      public void setInventory(ArrayList al) {

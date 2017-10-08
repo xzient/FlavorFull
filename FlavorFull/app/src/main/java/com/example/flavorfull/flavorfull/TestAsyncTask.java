@@ -84,14 +84,17 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
                 JSONArray ingredients = recipe.getJSONArray("ingredients");
 
 
-                Log.d("DEBUGGING!!! ", "In recipe: " + recipe.get("title").toString());
+                Log.d("DEBUGGING!!! ", "LOOPING THROUGH RECIPE: " + recipe.get("title").toString());
 
                 int total = 0;
                 int has = 0;
 
+
+                Log.d("DEBUGGING!!! ", ingredients.length() + "");
+
                 //loop ingredients in recipe
-                for (int j = 0; i < ingredients.length(); i++) {
-                    JSONObject actualIngredient = new JSONObject(ingredients.get(i).toString());
+                for (int j = 0; j < ingredients.length(); j++) {
+                    JSONObject actualIngredient = new JSONObject(ingredients.get(j).toString());
                     String spiceName = actualIngredient.get("ingredientName").toString().replace("&reg;","®");
                     Log.d("DEBUGGING!!! ", "In ingredient: " + spiceName);
                     if (allSpices.contains(spiceName)) {

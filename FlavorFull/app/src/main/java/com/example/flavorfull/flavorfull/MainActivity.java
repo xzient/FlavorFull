@@ -3,6 +3,7 @@ package com.example.flavorfull.flavorfull;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
         person = User.getInstance();
 
         display = (TextView) findViewById(R.id.display_textview);
+        display.setMovementMethod(new ScrollingMovementMethod());
         spice = (Button) findViewById(R.id.button2);
         recipe = (Button) findViewById(R.id.button3);
         display_spices = (Button) findViewById(R.id.button4);;
+
 
         //Add all spices to inventory
         if(!person.read) {

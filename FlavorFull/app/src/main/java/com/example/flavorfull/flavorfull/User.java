@@ -25,11 +25,17 @@ public class User {
     String username;
     public static boolean read = false;
     static ArrayList spices = new ArrayList();
-    ArrayList inventory = new ArrayList();
+    static public ArrayList inventory = new ArrayList();
 
     public static User getInstance(){
         if (user_instance == null) {
             user_instance = new User();
+
+            spices.add("McCormick® Smoky Bourbon BBQ Pulled Pork Slow Cooker Sauce");
+            spices.add("Chipotle Meatball Sauce Mix  (Albóndigas al Chipotle)");
+            spices.add("McCormick® Taco Seasoning Mix");
+            spices.add("ZATARAIN'S® Chicken & Sausage Jambalaya for 2");
+
         }
         return user_instance;
     }
@@ -53,7 +59,7 @@ public class User {
         Iterator<String> itr = spices.iterator();
         while (itr.hasNext()) {
             String element = itr.next();
-            stringB += element + "\n";
+            stringB += element + "\n\n";
         }
 
         return stringB;

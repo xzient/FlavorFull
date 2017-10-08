@@ -25,13 +25,14 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
     private String mUrl;
     private String recipeID;
     private ImageView picture;
-    StringBuilder sb = null;
+    static StringBuilder sb = null;
 
     public TestAsyncTask(Activity context, String url, String recipeID) {
         mContext = context;
         mUrl = url;
         this.recipeID = recipeID;
         picture = (ImageView) mContext.findViewById(R.id.spiceImage);
+        viewed.add(recipeID);
 
     }
 
@@ -61,13 +62,13 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
         }
 
 
-        ArrayList<String> allSpices = null;
-        ArrayList<String> hasSpices = null;
+        ArrayList<String> allSpices = User.inventory;
+        ArrayList<String> hasSpices = User.spices;
 
         try{
             JSONObject json = new JSONObject(sb.toString());
             JSONArray arr = json.getJSONArray("content");
-//test
+
             for (int i = 0; i < arr.length(); i++) {
                 JSONObject recipe = new JSONObject(arr.get(i).toString());
                 JSONArray ingredients = recipe.getJSONArray("ingredients");
@@ -83,8 +84,9 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
                         }
                     }
                 }
-                if (has == total) {
+                if (has == total && !viewed.contains(recipe.get("id").toString())) {
                     viewed.add(recipe.get("id").toString());
+                    recipeID = recipe.get("id").toString();
                     return recipe.get("id").toString();
                 }
             }
@@ -101,7 +103,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     protected String doInBackground(Void... b) {
-
+        Log.d("DEBUGGING!!!  ", "doInBackground");
         if(sb != null){
             recipeID = findRecipe(null);
         }
@@ -166,7 +168,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
             }
         };
         try{
-
+            Log.d("DEBUGGING!!!  ", "try  1");
             JSONObject json = new JSONObject(sb.toString());
 
             JSONArray arr = json.getJSONArray("content");
@@ -181,6 +183,8 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
                 }
             }
 
+
+            Log.d("DEBUGGING!!! ", "for loop ");
 
             String title = recipe.get("title").toString();
 

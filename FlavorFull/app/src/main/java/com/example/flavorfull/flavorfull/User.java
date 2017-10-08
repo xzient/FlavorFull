@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class User {
     private static User user_instance = null;
     String username;
+    public static boolean read = false;
     static ArrayList spices = new ArrayList();
     ArrayList inventory = new ArrayList();
 
@@ -41,12 +42,17 @@ public class User {
     }
 
     public String display() {
-        return this.inventory.toString();
+        return this.spices.toString();
     }
 
 
      public void setInventory(ArrayList al) {
          this.inventory = al;
+     }
+
+     public void setReadVal(){
+         read = true;
+
      }
 
 

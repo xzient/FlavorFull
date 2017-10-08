@@ -50,38 +50,38 @@ public class MainActivity extends AppCompatActivity {
         recipe = (Button) findViewById(R.id.button3);
         display_spices = (Button) findViewById(R.id.button4);;
 
-        //Spices
+        //Add all spices to inventory
+        if(!person.read) {
+            data = "";
+            buffer = new StringBuffer();
+            inventory = new ArrayList();
+            InputStream is = this.getResources().openRawResource(R.raw.spices);
 
-        data = "";
-        buffer = new StringBuffer();
-        inventory = new ArrayList();
-        InputStream is = this.getResources().openRawResource(R.raw.spices);
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-
-        if(is != null) {
-            Toast.makeText(MainActivity.this, "ABC TEST",
-                    Toast.LENGTH_SHORT).show();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 
 
-            try {
+            if(is != null) {
 
-                Toast.makeText(MainActivity.this, data,
-                        Toast.LENGTH_SHORT).show();
 
-                while((data=reader.readLine()) != null) {
-                    inventory.add(data);
-                    person.setInventory(inventory);
 
+                try {
+
+
+                    while((data=reader.readLine()) != null) {
+                        inventory.add(data);
+                        person.setInventory(inventory);
+                        person.read = true;
+
+                    }
+                    is.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                is.close();
 
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
         }
+
 
 
 
@@ -102,6 +102,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Recipe
+        recipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent get_recipe_intent = new Intent(MainActivity.this, GetRecipe.class);
+                startActivity(get_recipe_intent);
+            }
+        });
 
 
 

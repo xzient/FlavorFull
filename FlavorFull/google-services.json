@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "366598936164",
+    "firebase_url": "https://flavorfull-d05e3.firebaseio.com",
+    "project_id": "flavorfull-d05e3",
+    "storage_bucket": "flavorfull-d05e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366598936164:android:76fd6d8ca79fdd81",
+        "android_client_info": {
+          "package_name": "com.example.flavorfull.flavorfull"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366598936164-r5i1vi9t0cmgoctg7utr9rri0j8lji72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3PjJNSLNNXQjZUInh7fujy9dQ_KrbSro"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

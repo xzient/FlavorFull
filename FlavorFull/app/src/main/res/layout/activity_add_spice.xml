@@ -20,7 +20,8 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <!--
             <ImageView
@@ -29,18 +30,22 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
                 android:src="@mipmap/ic_launcher" />
-            -->
 
-            <EditText
-                android:id="@+id/add_spice"
+
+            <spinner
+                android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:ems="10"
-                android:hint="New Spice"
-                android:inputType="text" />
+                android:layout_weight="0.59"></spinner>
+            -->
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
 
 

@@ -16,4 +16,16 @@
     <string name="action_submit">Submit</string>
 
 
+
+    <string-array name="Spices">
+        <item>ZATARAIN\'S® Salad Olives</item>
+        <item>ZATARAIN\'S® Dirty Rice Cup</item>
+        <item>ZATARAIN\'S® Spanish Rice</item>
+        <item>McCormick® Grill Mates® Mesquite Marinade</item>
+        <item>Adolph\'s® Beef Stew Meal Maker</item>
+        <item>McCormick® Good Morning Mixed Berry Smoothie Boost</item>
+        <item>McCormick® Alum (alumbre)</item>
+        <item>McCormick® Dill Weed (eneldo)</item>
+        <item>McCormick® Curry Powder (curry en polvo)</item>
+    </string-array>
 </resources>

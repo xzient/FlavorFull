@@ -24,7 +24,7 @@ public class User {
     String username;
     public static boolean read = false;
     static ArrayList spices = new ArrayList();
-    ArrayList inventory = new ArrayList();
+    static public ArrayList inventory = new ArrayList();
 
     public static User getInstance(){
         if (user_instance == null) {

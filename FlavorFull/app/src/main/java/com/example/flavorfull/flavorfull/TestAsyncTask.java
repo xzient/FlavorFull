@@ -71,6 +71,17 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
         hasSpices.add("McCormick® Black Pepper, Ground");
         hasSpices.add("McCormick® Thyme Leaves");
 
+
+        /*
+        String title = recipe.get("title").toString();
+
+            final String finalTitle = title;
+            mContext.runOnUiThread(new Runnable() { public void run() {
+                TextView txtv = (TextView) mContext.findViewById(R.id.txt_title);
+                txtv.setText(finalTitle);
+            }});
+
+         */
         Log.d("DEBUGGING!!! ", "added " + hasSpices.get(0) + " " + hasSpices.get(1));
         try{
             JSONObject json = new JSONObject(sb.toString());
@@ -110,7 +121,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
                     }
                 }
-                if (has == total && !viewed.contains(recipe.get("id").toString())) {
+                if (has > 0 && has != 0 &&  !viewed.contains(recipe.get("id").toString())) {
 
                     Log.d("DEBUGGING!!! ", "matched perfectly: " + recipe.get("title").toString());
                     viewed.add(recipe.get("id").toString());

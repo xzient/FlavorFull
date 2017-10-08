@@ -3,6 +3,7 @@ package com.example.flavorfull.flavorfull;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,12 +33,15 @@ public class GetRecipe extends AppCompatActivity {
 
         recipeID = "2c554ee192f549aab6e84b4ed75eeebb";
 
-        final TestAsyncTask testAsyncTask = new TestAsyncTask(GetRecipe.this, "https://flavorfull.mybluemix.net/recipes?page=2", recipeID);
+        TestAsyncTask testAsyncTask = new TestAsyncTask(GetRecipe.this, "https://flavorfull.mybluemix.net/recipes?page=2", recipeID);
         testAsyncTask.execute();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.d("DEBUGGING!!! ", "button pressed ");
+                TestAsyncTask testAsyncTask = new TestAsyncTask(GetRecipe.this, "https://flavorfull.mybluemix.net/recipes?page=2", recipeID);
                 testAsyncTask.execute();
             }
         });

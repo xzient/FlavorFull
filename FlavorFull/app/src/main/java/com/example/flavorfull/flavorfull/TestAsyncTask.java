@@ -93,7 +93,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
         }
 
 
-    return null;
+        return null;
     }
     @Override
     protected void onPreExecute() {
@@ -102,8 +102,13 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
     protected String doInBackground(Void... b) {
 
+        if(sb != null){
+            recipeID = findRecipe(null);
+        }
         doJSON(mUrl);
-       return null;
+
+
+        return null;
     }
 
 
@@ -166,7 +171,16 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
 
             JSONArray arr = json.getJSONArray("content");
 
-            JSONObject recipe = new JSONObject(arr.get(1).toString());
+            JSONObject recipe = null;
+
+            for(int i = 0; i < arr.length(); i++){
+                recipe = new JSONObject(arr.get(i).toString());
+                String currentId = recipe.get("id").toString();
+                if(currentId.equals(recipeID)){
+                    break;
+                }
+            }
+
 
             String title = recipe.get("title").toString();
 
@@ -194,7 +208,7 @@ public class TestAsyncTask extends AsyncTask<Void, Void, String> {
                 JSONObject uim1 = new JSONObject(actualIngredient.toString());
                 JSONObject uim2 = new JSONObject(uim1.get("primUom").toString());
 
-                ingSB.append("[+] " + actualIngredient.get("primQty").toString() + " " + uim2.get("name").toString() + " " + actualIngredient.get("ingredientName").toString() + "\n");
+                ingSB.append("[+] " + actualIngredient.get("primQty").toString() + " " + uim2.get("name").toString() + " " + actualIngredient.get("ingredientName").toString().replace("&reg;", "®") + "\n");
 
             }
 

@@ -76,7 +76,6 @@ public class SignUp extends AppCompatActivity {
                 final String password = mPassword.getText().toString().trim();
                 //final String username = mUsername.getText().toString().trim(); // This is not implemented now.
 
-
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                             @Override
